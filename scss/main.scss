@@ -1,0 +1,230 @@
+@import "variable";
+@import "mixin";
+@import "extend";
+
+* {
+    margin: 0;
+    padding :0;
+    box-sizing: border-box
+}
+
+body {
+    font-family: Merriweather,'Helvetica Neue',Arial,sans-serif;
+}
+
+.container {
+    width: 85%;
+    margin: auto;
+}
+
+
+// header
+header {
+    background: $secondaryColor;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    top:0;
+    z-index: 999;
+    .logo {
+        @extend .w_f;
+        h2 {
+            padding :10px 0;
+            color :#c9c5bd;
+        }
+    }
+
+    ul {
+        @extend .w_f; 
+        display: flex;
+        list-style: none;
+        padding: 10px 0;
+        li {
+           padding : 10px 15px;
+           a {
+               color: #c9c5bd;
+               text-decoration: none;
+               font-weight: bold;
+               text-transform: uppercase;
+               @include Trans; 
+               &:hover {
+                color: $primaryColor;
+               }
+           } 
+        }
+    }
+}
+
+
+// home
+.home {
+    background: $home_bg;
+    height: 100vh;
+    background-size: cover;
+    text-align: center;
+    position: relative;
+    
+    .home-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+
+        h2 {
+            @extend .h2;
+        }
+
+        span {
+            @extend .span;
+        }
+
+        p {
+            @extend .p;
+        }
+        button {
+            @extend .button-p;
+        }
+    }
+}
+
+// need 
+.need {
+    background: $primaryColor;
+    padding : 5rem 0;
+    text-align: center;
+    h2 {
+        @extend .h2;
+    }
+    p {
+        @extend .p;
+        color :#fff;
+    }
+    span {
+        @extend .span;
+        background: #fff;
+    }
+    button {
+        @extend .button-s;
+    }
+}
+
+// service 
+.service {
+    padding: 5rem 0;
+    background: #fff;
+    text-align: center;
+
+    h2 {
+        @extend .h2;
+        color : $secondaryColor
+    }
+
+    span {
+        @extend .span;
+    }
+
+    .service-parent {
+        display: grid;
+        grid-template-columns: repeat(4 , 1fr);
+        grid-gap: 15px;
+        margin: 1.5rem 0;
+        
+        i {
+            color: $primaryColor;
+        }
+
+        h3 {
+            margin: 1rem 0;
+            color: #333;
+        }
+
+        p {
+            color: #a4a4a4;
+        }
+    }
+}
+
+
+// images
+.images{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    font-size: 0;
+    > div {
+        position : relative;
+        img {
+            width: 100%;
+        }
+
+        &:after {
+            content: "";
+            position :absolute;
+            top: 0;
+            left : 0;
+            width: 100%;
+            height: 100%;
+            background: rgba($primaryColor, 0.6);
+            opacity: 0;
+            @include Trans;
+        }
+
+        &:hover {
+            &:after {
+                opacity : 1;
+            }
+        }
+    }
+}
+
+// download
+.download {
+    text-align: center;
+    background: $secondaryColor;
+    padding : 5rem 0;
+
+    h2 {
+        @extend .h2;
+    }
+
+    button {
+        @extend .button-s;
+        margin: 1rem 0;
+    }
+}
+
+// get-touch
+.get-touch {
+    text-align: center;
+    padding: 5rem 0;
+
+    h2 {
+        @extend .h2;
+        color : #333;
+
+    }
+
+    > span {
+        @extend .span;
+    }
+
+    .touch {
+        display: flex;
+        justify-content: center;
+        .item {
+            margin: 1rem 1.5rem;
+
+            i {
+                display: block;
+            }
+
+            &:last-child {
+                span {
+                    color : $primaryColor;
+                }
+            }
+        }
+        
+    }
+}
+
+@import "media";
